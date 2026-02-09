@@ -1,13 +1,10 @@
-// Note - the autograder expects this exact include for your catch code! If you use the manual catch compilation method, be sure you put this include back before submitting.
 #include <catch2/catch_test_macros.hpp>
-
 #include "GatorBST.h"
 #include <vector>
 #include <string>
 #include <iostream>
 using namespace std;
 
-// the syntax for defining a test is below. It is important for the name to be unique, but you can group multiple tests with [tags]. A test can have [multiple][tags] using that syntax.
 TEST_CASE("Tree height/insert"){
 	GatorBST tree1;
 	tree1.Insert(1111, "Student 1");
@@ -42,7 +39,7 @@ TEST_CASE("Find student"){
 	REQUIRE(name == "Student 3");
 }
 
-TEST_CASE("Find student"){
+TEST_CASE("Find student by ID and name"){
 	GatorBST tree1;
 	tree1.Insert(1111, "Student 1");
 	tree1.Insert(1112, "Student 1");
@@ -56,18 +53,6 @@ TEST_CASE("Find student"){
 	REQUIRE(names.size() == 2);
 }
 
-TEST_CASE("Find student"){
-	GatorBST tree1;
-	tree1.Insert(1111, "Student 1");
-	tree1.Insert(2222, "Student 2");
-	tree1.Insert(3333, "Student 3");
-	tree1.Insert(00, "Student 0");
-
-	String* name = tree1.SearchName("Student 3");
-	
-	REQUIRE(name == "Student 3");
-}
-
 TEST_CASE("In order traversal"){
 	GatorBST tree1;
 	tree1.Insert(1111, "Student 1");
@@ -77,7 +62,7 @@ TEST_CASE("In order traversal"){
 	tree1.Insert(700, "Student 7");
 
 	vector<Node*> inOrder = tree1.TraverseInorder();
-	REQUIRE(inOrder[i]->ufid == 00) ;
+	REQUIRE(inOrder[0]->ufid == 00) ;
 }
 
 TEST_CASE("Pre order traversal"){
@@ -89,7 +74,7 @@ TEST_CASE("Pre order traversal"){
 	tree1.Insert(700, "Student 7");
 	
 	vector<Node*> preOrder = tree1.TraversePreorder();
-	REQUIRE(preOrder[i]->ufid == 1111) ;
+	REQUIRE(preOrder[0]->ufid == 1111) ;
 }
 
 TEST_CASE("Post order traversal"){
@@ -101,7 +86,7 @@ TEST_CASE("Post order traversal"){
 	tree1.Insert(700, "Student 7");
 	
 	vector<Node*> postOrder = tree1.TraversePostorder();
-	REQUIRE(postOrder[i]->ufid == 700);
+	REQUIRE(postOrder[0]->ufid == 700);
 }
 
 // You are free to write as many tests as you want. Your credit for this
