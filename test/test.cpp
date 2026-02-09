@@ -2,36 +2,106 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include "GatorBST.h"
-
+#include <vector>
+#include <string>
+#include <iostream>
 using namespace std;
 
 // the syntax for defining a test is below. It is important for the name to be unique, but you can group multiple tests with [tags]. A test can have [multiple][tags] using that syntax.
-TEST_CASE("Example Test Name - Change me!", "[flag]"){
-	// instantiate any class members that you need to test here
-	int one = 1;
+TEST_CASE("Tree height/insert"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(3333, "Student 3");
+	tree1.Insert(00, "Student 0");
 
-	// anything that evaluates to false in a REQUIRE block will result in a failing test 
-	REQUIRE(one == 0); // fix me!
+	SECTION("heihgt is 4") {
+		tree1.Insert(5123, "Student 5");
+		tree1.Insert(700, "Student 4");
+		int height = tree.Height();
+		REQUIRE(height == 4);
+	};
 
-	// all REQUIRE blocks must evaluate to true for the whole test to pass
-	REQUIRE(false); // also fix me!
+	SECTION("height is 3") {
+		tree1.Insert(1000, "Student 5");
+		tree1.Insert(2000, "Student 4");
+		int height = tree.Height();
+		REQUIRE(height == 3);
+	};
 }
 
-TEST_CASE("Test 2", "[flag]"){
-	// you can also use "sections" to share setup code between tests, for example:
-	int one = 1;
+TEST_CASE("Find student"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(3333, "Student 3");
+	tree1.Insert(00, "Student 0");
 
-	SECTION("num is 2") {
-		int num = one + 1;
-		REQUIRE(num == 2);
-	};
+	String* name = tree1.SearchName("Student 3");
+	
+	REQUIRE(name == "Student 3");
+}
 
-	SECTION("num is 3") {
-		int num = one + 2;
-		REQUIRE(num == 3);
-	};
+TEST_CASE("Find student"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(1112, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(3333, "Student 3");
+	tree1.Insert(00, "Student 0");
+	vector<int> names = tree1.SearchName("Student 1");
+	String* name = tree1.SearchID("3333");
+	
+	REQUIRE(*name == 3333);
+	REQUIRE(names.size() == 2);
+}
 
-	// each section runs the setup code independently to ensure that they don't affect each other
+TEST_CASE("Find student"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(3333, "Student 3");
+	tree1.Insert(00, "Student 0");
+
+	String* name = tree1.SearchName("Student 3");
+	
+	REQUIRE(name == "Student 3");
+}
+
+TEST_CASE("In order traversal"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(3333, "Student 3");
+	tree1.Insert(00, "Student 0");
+	tree1.Insert(700, "Student 7");
+
+	vector<Node*> inOrder = tree1.TraverseInorder();
+	REQUIRE(inOrder[i]->ufid == 00) ;
+}
+
+TEST_CASE("Pre order traversal"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(3333, "Student 3");
+	tree1.Insert(00, "Student 0");
+	tree1.Insert(700, "Student 7");
+	
+	vector<Node*> preOrder = tree1.TraversePreorder();
+	REQUIRE(preOrder[i]->ufid == 1111) ;
+}
+
+TEST_CASE("Post order traversal"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(3333, "Student 3");
+	tree1.Insert(00, "Student 0");
+	tree1.Insert(700, "Student 7");
+	
+	vector<Node*> postOrder = tree1.TraversePostorder();
+	REQUIRE(postOrder[i]->ufid == 700);
 }
 
 // You are free to write as many tests as you want. Your credit for this
