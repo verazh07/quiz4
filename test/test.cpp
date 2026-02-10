@@ -29,7 +29,7 @@ TEST_CASE("Tree deletion"){
 	tree1.Insert(5555, "Student 5");
 	tree1.Remove(00);
 	tree1.Remove(4444);
-	bool isRemoved = tree.Remove(1000);
+	bool isRemoved = tree1.Remove(1000);
 	vector<int> names = tree1.SearchName("Student 4");
 
 	REQUIRE(isRemoved == false);
@@ -54,7 +54,7 @@ TEST_CASE("Find student by ID"){
 	tree1.Insert(2222, "Student 2");
 	tree1.Insert(3333, "Student 3");
 	tree1.Insert(00, "Student 0");
-	optional opt = tree1.SearchID(2222);
+	optional<string_view> opt = tree1.SearchID(2222);
 
 	REQUIRE(opt.has_value() == true);
 }
