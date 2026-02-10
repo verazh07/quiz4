@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <optional>
 using namespace std;
 
 TEST_CASE("Tree height/insert"){
@@ -10,21 +11,29 @@ TEST_CASE("Tree height/insert"){
 	tree1.Insert(1111, "Student 1");
 	tree1.Insert(2222, "Student 2");
 	tree1.Insert(3333, "Student 3");
+	tree1.Insert(4444, "Student 4");
 	tree1.Insert(00, "Student 0");
 
-	SECTION("heihgt is 4") {
-		tree1.Insert(5123, "Student 5");
-		tree1.Insert(700, "Student 4");
-		int height = tree1.Height();
-		REQUIRE(height == 4);
-	};
 
-	SECTION("height is 3") {
-		tree1.Insert(1000, "Student 5");
-		tree1.Insert(2000, "Student 4");
-		int height = tree1.Height();
-		REQUIRE(height == 3);
-	};
+	int height = tree1.Height();
+	REQUIRE(height == 4);
+}
+
+TEST_CASE("Tree deletion"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(3333, "Student 3");
+	tree1.Insert(00, "Student 0");
+	tree1.Insert(4444, "Student 4");
+	tree1.Insert(5555, "Student 5");
+	tree1.Remove(00);
+	tree1.Remove(4444);
+	bool isRemoved = tree.Remove(1000);
+	vector<int> names = tree1.SearchName("Student 4");
+
+	REQUIRE(isRemoved == false);
+	REQUIRE(names.empty() == true);
 }
 
 TEST_CASE("Find student by name"){
@@ -37,6 +46,17 @@ TEST_CASE("Find student by name"){
 	vector<int> names = tree1.SearchName("Student 1");
 
 	REQUIRE(names.size() == 2);
+}
+
+TEST_CASE("Find student by ID"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(3333, "Student 3");
+	tree1.Insert(00, "Student 0");
+	optional opt = tree1.SearchID(2222);
+
+	REQUIRE(opt.has_value() == true);
 }
 
 TEST_CASE("In order traversal"){
