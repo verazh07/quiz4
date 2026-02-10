@@ -124,7 +124,7 @@ TEST_CASE("In order traversal"){
 TEST_CASE("Empty vector traversal - inorder"){
 	GatorBST tree1;	
 	vector<Node*> inOrder = tree1.TraverseIneorder();
-	REQUIRE(Inorder.empty() == true);
+	REQUIRE(inOrder.empty() == true);
 }
 
 TEST_CASE("Pre order traversal"){
