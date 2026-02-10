@@ -162,3 +162,36 @@ TEST_CASE("Empty Post order traversal"){
 	vector<Node*> postOrder = tree1.TraversePostorder();
 	REQUIRE(postOrder.empty() == true);
 }
+
+
+
+
+TEST_CASE("1"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(0, "Student 3");
+
+	vector<Node*> inOrder = tree1.TraverseInorder();
+	REQUIRE(inOrder[0]->ufid == 0);
+}
+
+TEST_CASE("2"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(0, "Student 3");
+
+	vector<Node*> preOrder = tree1.TraversePreorder();
+	REQUIRE(preOrder[0]->ufid == 1111);
+}
+
+TEST_CASE("3"){
+	GatorBST tree1;
+	tree1.Insert(1111, "Student 1");
+	tree1.Insert(2222, "Student 2");
+	tree1.Insert(0, "Student 3");
+
+	vector<Node*> postOrder = tree1.TraversePostorder();
+	REQUIRE(postOrder[0]->ufid == 0);
+}
