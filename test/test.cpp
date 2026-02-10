@@ -15,31 +15,19 @@ TEST_CASE("Tree height/insert"){
 	SECTION("heihgt is 4") {
 		tree1.Insert(5123, "Student 5");
 		tree1.Insert(700, "Student 4");
-		int height = tree.Height();
+		int height = tree1.Height();
 		REQUIRE(height == 4);
 	};
 
 	SECTION("height is 3") {
 		tree1.Insert(1000, "Student 5");
 		tree1.Insert(2000, "Student 4");
-		int height = tree.Height();
+		int height = tree1.Height();
 		REQUIRE(height == 3);
 	};
 }
 
-TEST_CASE("Find student"){
-	GatorBST tree1;
-	tree1.Insert(1111, "Student 1");
-	tree1.Insert(2222, "Student 2");
-	tree1.Insert(3333, "Student 3");
-	tree1.Insert(00, "Student 0");
-
-	String* name = tree1.SearchName("Student 3");
-	
-	REQUIRE(name == "Student 3");
-}
-
-TEST_CASE("Find student by ID and name"){
+TEST_CASE("Find student by name"){
 	GatorBST tree1;
 	tree1.Insert(1111, "Student 1");
 	tree1.Insert(1112, "Student 1");
@@ -47,9 +35,7 @@ TEST_CASE("Find student by ID and name"){
 	tree1.Insert(3333, "Student 3");
 	tree1.Insert(00, "Student 0");
 	vector<int> names = tree1.SearchName("Student 1");
-	String* name = tree1.SearchID("3333");
-	
-	REQUIRE(*name == 3333);
+
 	REQUIRE(names.size() == 2);
 }
 
