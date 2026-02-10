@@ -95,7 +95,7 @@ TEST_CASE("First duplicate student ID is 1111"){
 	tree1.Insert(00, "Student 0");
 	vector<int> names = tree1.SearchName("Student 1");
 
-	REQUIRE(names[0] == 1111)
+	REQUIRE(names[0] == 1111);
 }
 
 TEST_CASE("Finds student by ID"){
@@ -124,7 +124,7 @@ TEST_CASE("In order traversal"){
 TEST_CASE("Empty vector traversal - inorder"){
 	GatorBST tree1;	
 	vector<Node*> inOrder = tree1.TraverseIneorder();
-	REQUIRE(InOrder.empty() == true);
+	REQUIRE(Inorder.empty() == true);
 }
 
 TEST_CASE("Pre order traversal"){
